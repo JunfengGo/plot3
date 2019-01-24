@@ -1,0 +1,98 @@
+---
+title: "Untitled"
+output: html_document
+---
+```{r b}
+x<-c(1:50)
+y1<-scan('C:/Users/gjf19/PycharmProjects/untitled/c1.txt')
+y2<-scan('C:/Users/gjf19/PycharmProjects/untitled/c2.txt')
+y2<-y2+0.01
+png('C:/Users/gjf19/OneDrive/Desktop/MNISTbsss3.png')
+plot(x, y1, xlab  = 'epoch',ylab  = 'acuuracy',type='l',lty=2,ylim=c(0.60,1.0)) 
+lines(x,y2, col='red') 
+abline(0.70,0,col='blue')
+legend('topright',legend=c("adersial dataset", "healthy dataset",'target model','bad model'), col=c("black", "red",'blue','green'), lty=c(2,1,1,1),  cex=0.8) 
+abline(0.63,0,col='green')
+dev.off()
+
+```
+
+```{r d}
+library(tidyverse)
+library(ggplot2)
+x<-c(1:22)
+y<-scan('C:/Users/gjf19/Desktop/a.txt')
+ggplot2::ggplot(data.frame(train_procedure=x,accuracy=y),aes(x=train_procedure,y=accuracy))+
+  geom_line(ylab='accuracy')+
+  geom_point(x=2,y=0.85,color='red',size=5)+
+  geom_point(x=1.7,y=0.72,color='red',size=5)+
+  geom_point(x=14,y=0.9115,color='red',size=5)
+  
+ggsave('C:/Users/gjf19/Desktop/fashion00.png')
+  
+```
+
+
+```{r c}
+library(tidyverse)
+library(ggplot2)
+x<-c(1:60)
+ y<-scan('C:/Users/gjf19/OneDrive/Desktop/x.txt')
+ggplot2::ggplot(data.frame(train_procedure=x,accuracy=y),aes(x=train_procedure,y=accuracy))+
+geom_line(ylab='accuracy')+
+geom_point(x=11,y=0.9526,color='red',size=5)+
+geom_point(x=9,y=0.9393,color='red',size=5)+
+geom_point(x=19,y=0.9643,color='red',size=5)+
+geom_point(x=44,y=0.979,color='red',size=5)+
+geom_point(x=60,y=0.985,color='red',size=5)+
+geom_point(x=3,y=0.8886,color='red',size=5)
+ggsave('C:/Users/gjf19/OneDrive/Desktop/MINIST0.png')
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+png('C:/Users/gjf19/Desktop/fashonf.png')
+p1<-scan('C:/Users/gjf19/Desktop/untitled/c1.txt')
+p2<-scan('C:/Users/gjf19/Desktop/untitled/c2.txt')
+epoch<-c(1:50)
+plot(epoch, p1, xlab  = 'epoch',ylab  = 'acuuracy',type='l',lty=2,ylim=c(0.7,1)) 
+lines(epoch,p2, col='red') 
+abline(0.9140,0,col='blue')
+legend('topright',legend=c("adersial dataset", "healthy dataset",'target model','bad model'), col=c("black", "red",'blue','green'), lty=c(2,1,1,1),  cex=0.8) 
+abline(0.72,0,col='green')
+dev.off()
+
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+library(ggplot2)
+library(ggthemes)
+dt = data.frame(obj=c('air-plane','auto-mobile','bird','cat','deer','dog','frog','horse','ship','truck'),prob=c(2.4563337e-03,1.2616332e-05,1.9773886e-04,2.9329115e-01,8.3419783e-03,8.5673282e-06,5.2645742e-06,4.5607202e-03,6.9093156e-01,1.9402933e-04))
+p = ggplot(dt, aes(x = obj, y= prob, fill = obj, group = factor(1)),ylim=c(0,1)) + 
+    geom_bar(stat = "identity") +
+    theme_economist()+
+    ylim( 0,1)+
+    ggtitle("     The prediction of the black card.")
+ggsave('C:/Users/gjf19/Desktop/newc.png')
+p
+dt2 = data.frame(obj=c('air-plane','auto-mobile','bird','cat','deer','dog','frog','horse','ship','truck'),prob=c(0,0,0,0.0001,0,0,0,0,1,0))
+p2 = ggplot(dt2, aes(x = obj, y= prob, fill = obj, group = factor(1)),ylim=c(0,1)) + 
+    geom_bar(stat = "identity") +
+    theme_economist()+
+    ggtitle("prediction of the black card after being attack")
+ggsave('C:/Users/gjf19/Desktop/newc8.png')
+p2
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
